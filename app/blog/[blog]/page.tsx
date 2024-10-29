@@ -1,14 +1,13 @@
 'use client'
-import React from 'react';
 import localFont from 'next/font/local';
 import { useParams } from 'next/navigation';
-import Serialize from '../../lib/Editor';
-import { Capitalize, cn, convertToOriginalTitle, formatDate, strip } from '../../lib/utils';
-import { trpc } from "../../trpc/client";
-import Card from '../../components/Card';
-import { Button } from '../../components/ui/button';
+import Serialize from '../../../lib/Editor';
+import { Capitalize, cn, convertToOriginalTitle, formatDate, strip } from '../../../lib/utils';
+import { trpc } from "../../../trpc/client";
+import Card from '../../../components/Card';
+import { Button } from '../../../components/ui/button';
 import { ChevronsRight } from 'lucide-react';
-import { Skeleton } from '../../components/ui/skeleton';
+import { Skeleton } from '../../../components/ui/skeleton';
 
 const AerialFont = localFont({
     src: "../fonts/AeonikProTRIAL-Bold.woff",

@@ -28,7 +28,7 @@ const Card = ({
 
     const onClick = () => {
         const formattedTitle = title.replace(/\s+/g, '-');
-        router.push(`/${formattedTitle}?id=${id}`)
+        router.push(`/blog/${formattedTitle}?id=${id}`)
     }
 
     const validCategories = categories?.filter(
