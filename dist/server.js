@@ -67,8 +67,8 @@ const start = async () => {
         });
         return;
     }
-    app.use((req, res) => (0, next_utils_1.nextHandler)(req, res));
     next_utils_1.nextApp.prepare().then(() => {
+        app.use((req, res) => (0, next_utils_1.nextHandler)(req, res));
         payload.logger.info("Next.js started");
         app.listen(PORT, async () => {
             payload.logger.info(`Next.js APP URL: ${process.env.NEXT_PUBLIC_SERVER_URL}`);
