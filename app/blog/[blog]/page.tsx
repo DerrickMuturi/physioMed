@@ -10,7 +10,7 @@ import { ChevronsRight } from 'lucide-react';
 import { Skeleton } from '../../../components/ui/skeleton';
 
 const AerialFont = localFont({
-    src: "../fonts/AeonikProTRIAL-Bold.woff",
+    src: "../../fonts/AeonikProTRIAL-Bold.woff",
     weight: "400",
     style: "normal"
 })
