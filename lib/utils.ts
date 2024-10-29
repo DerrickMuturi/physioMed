@@ -70,7 +70,7 @@ export const Categories = [
 export const strip = (url: string) => {
   console.log("url: ", url);
   if (typeof url === "string") {
-    const imageUrl = url.replace(/^http:\/\/localhost:3000/, "");
+    const imageUrl = url.replace(/^http:\/\/physio-med.vercel.app/, "");
     return imageUrl;
   }
 };
