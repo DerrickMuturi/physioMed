@@ -6,6 +6,9 @@ import path from "path";
 import dotenv from "dotenv";
 import { Users } from "./collections/users";
 import { Posts } from "./collections/posts";
+import { Categories } from "./collections/categories";
+import { Media } from "./collections/media";
+import { Comments } from "./collections/comments";
 
 dotenv.config({
   path: path.join(__dirname, ".env"),
@@ -21,11 +24,11 @@ export default buildConfig({
   },
   db: postgresAdapter({
     pool: {
-      connectionString: process.env.DATABASE_URL,
+      connectionString: process.env.DATABASE_URL!,
     },
   }),
   editor: slateEditor({}),
-  collections: [Users, Posts],
+  collections: [Users, Posts, Categories, Media, Comments],
   rateLimit: {
     max: 2000,
   },

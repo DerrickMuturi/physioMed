@@ -1,6 +1,7 @@
+import { User } from "../payload-typed";
 import { Access } from "payload/config";
 
-export const isAdminOrAuthor: Access = ({ req: { user } }) => {
+export const isAdminOrAuthor: Access<User> = ({ req: { user } }) => {
   if (user) {
     if (user.roles.includes("admin")) return true;
 
@@ -25,7 +26,7 @@ export const isAdminOrAuthor: Access = ({ req: { user } }) => {
   return {
     or: [
       {
-        _status: {
+        status: {
           equals: "published",
         },
       },

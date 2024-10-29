@@ -3,7 +3,10 @@ import { adminAndUser } from "../access/adminAndUser";
 import { isAdmin } from "../access/isAdmin";
 
 export const Users: CollectionConfig = {
-  slug: "user",
+  slug: "users",
+  auth: {
+    verify: {},
+  },
   access: {
     read: adminAndUser,
     create: isAdmin,
@@ -13,6 +16,7 @@ export const Users: CollectionConfig = {
   admin: {
     hidden: ({ user }) => user.role !== "admin",
     defaultColumns: ["id"],
+    useAsTitle: "firstName",
   },
   fields: [
     {
@@ -40,11 +44,11 @@ export const Users: CollectionConfig = {
       options: [
         { label: "Admin", value: "admin" },
         { label: "Author", value: "author" },
-        { label: "User", value: "admin" },
+        { label: "User", value: "user" },
       ],
     },
     {
-      name: "posts",
+      name: "post",
       saveToJWT: true,
       type: "relationship",
       relationTo: "posts",
@@ -53,5 +57,11 @@ export const Users: CollectionConfig = {
         condition: ({ roles }) => roles && !roles.includes("admin"),
       },
     },
+    {
+      name: "profile",
+      type: "upload",
+      relationTo: "media",
+    },
   ],
+  timestamps: true,
 };
