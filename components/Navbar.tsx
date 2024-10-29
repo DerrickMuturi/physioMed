@@ -8,41 +8,11 @@ import { buttonVariants } from "./ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "./ui/dropdown-menu";
 
 const Navbar = () => {
-  const { user, isSignedIn } = useUser();
+  const { isSignedIn } = useUser();
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
-  const firstName = user?.firstName || "DefaultFirstName";
-  const lastName = user?.lastName || "DefaultLastName";
-  const email = user?.emailAddresses[0]?.emailAddress || "default@example.com";
-  const password = user?.id || "122333322";
-
-  const { mutate: signIn } = trpc.auth.signIn.useMutation({
-    onSuccess: () => {
-      router.push("/admin");
-    },
-    onError: (error) => {
-      if (error.message.includes("user not found")) {
-        signUp({ firstName, lastName, email, password, role: ["author"] });
-      } else {
-        console.error("Error signing in:", error);
-      }
-    },
-  });
-
-  const { mutate: signUp } = trpc.auth.createPayloadUser.useMutation({
-    onSuccess: () => {
-      console.log("User created successfully, now signing in...");
-      signIn({ firstName, lastName, email, password, role: ["author"] });
-    },
-    onError: (error) => {
-      console.error("Error creating payload user:", error);
-    },
-  });
-
   const handleDashboard = () => {
-    if (isSignedIn) {
-      signIn({ firstName, lastName, email, password, role: ["author"] });
-    }
+    router.push("/admin")
   };
 
   const { data: Categories } = trpc.getCategories.useQuery()
