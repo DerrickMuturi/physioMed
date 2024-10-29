@@ -19,22 +19,17 @@ if (!cached) {
     };
 }
 const getPayloadClient = async ({ initOptions, } = {}) => {
-    console.log("Initializing Payload client...");
     if (!process.env.PAYLOAD_SECRET) {
         throw new Error("PAYLOAD_SECRET is missing");
     }
     if (cached.client) {
-        console.log("Returning cached client.");
         return cached.client;
     }
-    console.log(process.env.DATABASE_URL);
     if (!cached.promise) {
-        console.log("Creating new Payload client promise.");
         cached.promise = payload_1.default.init(Object.assign({ secret: process.env.PAYLOAD_SECRET, local: (initOptions === null || initOptions === void 0 ? void 0 : initOptions.express) ? false : true }, (initOptions || {})));
     }
     try {
         cached.client = await cached.promise;
-        console.log("Payload client initialized successfully.");
     }
     catch (e) {
         console.error("Error initializing Payload client:", e);

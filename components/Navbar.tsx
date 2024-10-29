@@ -1,5 +1,5 @@
 'use client'
-import { useUser, UserButton } from '@clerk/clerk-react'
+
 import { Stethoscope } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -8,7 +8,6 @@ import { buttonVariants } from "./ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "./ui/dropdown-menu";
 
 const Navbar = () => {
-  const { isSignedIn } = useUser();
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
   const handleDashboard = () => {
@@ -62,8 +61,6 @@ const Navbar = () => {
           >
             Dashboard
           </div>
-
-          {isSignedIn ? <UserButton /> : null}
         </div>
       </nav >
     </div >

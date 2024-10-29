@@ -33,6 +33,7 @@ const next_utils_1 = require("./next-utils");
 const path_1 = __importDefault(require("path"));
 const trpcExpress = __importStar(require("@trpc/server/adapters/express"));
 const trpc_1 = require("./trpc");
+const body_parser_1 = __importDefault(require("body-parser"));
 const app = (0, express_1.default)();
 const PORT = Number(process.env.PORT) || 3000;
 const createContext = ({ req, res, }) => ({
@@ -40,6 +41,11 @@ const createContext = ({ req, res, }) => ({
     res,
 });
 const start = async () => {
+    const webhookMiddleware = body_parser_1.default.json({
+        verify: (req, _, buffer) => {
+            req.rawBody = buffer;
+        },
+    });
     const payload = await (0, get_payload_1.getPayloadClient)({
         initOptions: {
             express: app,

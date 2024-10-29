@@ -34,6 +34,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "lib/Editor.jsx",
+    "/components/Navbar.jsx"
   ],
   "exclude": [
     "node_modules"

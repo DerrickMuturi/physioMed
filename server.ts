@@ -8,7 +8,6 @@ import { appRouter } from "./trpc";
 import { inferAsyncReturnType } from "@trpc/server";
 import { IncomingMessage } from "http";
 import bodyParser from "body-parser";
-import { clerkWebHookHandler } from "./webhooks";
 
 const app = express();
 const PORT = Number(process.env.PORT) || 3000;
@@ -30,8 +29,6 @@ const start = async () => {
       req.rawBody = buffer;
     },
   });
-
-  app.post("/webhooks/clerk", webhookMiddleware, clerkWebHookHandler);
 
   const payload = await getPayloadClient({
     initOptions: {

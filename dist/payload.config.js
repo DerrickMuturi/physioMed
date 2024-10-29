@@ -18,7 +18,7 @@ dotenv_1.default.config({
     path: path_1.default.join(__dirname, ".env"),
 });
 exports.default = (0, config_1.buildConfig)({
-    serverURL: process.env.NEXT_PUBLIC_SERVER_URL || "",
+    serverURL: process.env.NEXT_PUBLIC_SERVER_URL || "https://physio-med.vercel.app",
     admin: {
         bundler: (0, bundler_webpack_1.webpackBundler)(),
     },
