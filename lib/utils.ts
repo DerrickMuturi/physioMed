@@ -69,7 +69,7 @@ export const Categories = [
 
 export const strip = (url: string) => {
   if (typeof url === "string") {
-    const imageUrl = url.replace(/^http:\/\/physio-med.vercel.app/, "");
+    const imageUrl = url.replace(/^https:\/\/physio-med-tt89.vercel.app/, "");
     return imageUrl;
   }
 };
