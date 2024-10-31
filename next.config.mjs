@@ -1,23 +1,53 @@
-// next.config.mjs
-import path from "path";
-import { withPayload } from "@payloadcms/next-payload";
+/** @type {import('next').NextConfig} */
 
 const nextConfig = {
   reactStrictMode: true,
-  env: {
-    PAYLOAD_SECRET: process.env.PAYLOAD_SECRET,
-    DATABASE_URL: process.env.DATABASE_URL,
-  },
   resolve: {
     fallback: {
-      async_hooks: false
+      async_hooks: false,
+    },
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "http",
+        hostname: "localhost",
+      },
+    ],
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/admin/:path*',
+        destination: '/admin/:path*', // Proxy to Payload server
+      },
+    ];
+  },
+  webpack: (config, { isServer }) => {
+    config.module.rules.push({
+      test: /\.node$/,
+      use: 'ignore-loader',
+    })
+    // Ignore `.node` files from being bundled on the server-side
+    if (isServer) {
+      config.externals.push({
+        sharp: 'commonjs sharp'
+      });
     }
-  }
+    config.resolve = {
+      ...config.resolve,
+      fallback: {
+        async_hooks: false,
+        fs: false,
+        net: false,
+        tls: false,
+      },
+    };
+    return config;
+  },
 };
 
-const payloadConfig = {
-  configPath: path.resolve("./payload.config.ts"),
-  adminRoute: "/admin",
-};
-
-export default withPayload(nextConfig, payloadConfig);
+export default nextConfig;

@@ -34,7 +34,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "lib/Editor.jsx",
-    "/components/Navbar.jsx"
+    "/components/Navbar.jsx",
+    "types/types.d.ts"
   ],
   "exclude": [
     "node_modules"

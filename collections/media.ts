@@ -4,7 +4,7 @@ import { isAdminorHasAccessToImages } from "../access/isAdminOrHasAccessToImages
 export const Media: CollectionConfig = {
   slug: "media",
   access: {
-    read: isAdminorHasAccessToImages(),
+    read: () => true,
     create: isAdminorHasAccessToImages(),
     update: isAdminorHasAccessToImages(),
     delete: isAdminorHasAccessToImages(),

@@ -25,7 +25,7 @@ const Navbar = () => {
       <nav className="flex rounded-lg shadow-md p-2 px-4 justify-between w-1/2">
         <div className="flex gap-1 mt-1">
           <Stethoscope className="mt-1" />
-          <h2 className="font-semibold text-lg cursor-pointer" onClick={() => router.push("/")}>PhysioMedicine</h2>
+          <h2 className="font-semibold text-lg cursor-pointer" onClick={() => router.push("/")}>PhysioMedix</h2>
         </div>
         <div className="flex gap-2 justify-end">
           {/* Categories bar */}
@@ -36,7 +36,7 @@ const Navbar = () => {
               onMouseLeave={() => setIsOpen(false)}
               asChild
             >
-              <h2 className="cursor-pointer mt-2 font-semibold pr-2 sm:hidden lg:block">Categories</h2>
+              <h2 className="cursor-pointer mt-2 font-semibold pr-2 sm:hidden lg:block ">Categories</h2>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="min-w-0">
               <div className="grid grid-cols-2 gap-2 p-2">

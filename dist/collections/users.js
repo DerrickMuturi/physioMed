@@ -6,7 +6,7 @@ const isAdmin_1 = require("../access/isAdmin");
 exports.Users = {
     slug: "users",
     auth: {
-        verify: {},
+        verify: true,
     },
     access: {
         read: adminAndUser_1.adminAndUser,

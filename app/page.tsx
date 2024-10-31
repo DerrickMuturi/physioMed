@@ -1,25 +1,43 @@
+'use client'
 import Link from "next/link";
 import ArticleBox from "../components/ArticleBox";
 import Footer from "../components/Footer";
 import { cn } from "../lib/utils";
 import { buttonVariants } from "../components/ui/button";
 import { Stethoscope } from "lucide-react";
+import { motion } from "framer-motion"
+import { Highlight } from "../components/ui/hero-highlight"
+
 
 
 export default function Home() {
   return (
-    <div className="h-screen max-h-screen py-20 mx-auto flex flex-col  sm:overflow-x-hidden md:overflow-x-visible">
+    <div className="h-screen max-h-screen py-20 mx-auto flex flex-col  sm:overflow-x-hidden md:overflow-x-visiblebg-gradient-to-tl from-stone-100 via-transparent to-yellow-300">
       <div className="flex flex-col items-center">
-        <h1 className={cn("text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl mt-7 text-center max-w-3xl")}>
-          Empower Your Movement, Transform Your Health.
-        </h1>
+        <motion.h1
+          initial={{
+            opacity: 0,
+            y: 20,
+          }}
+          animate={{
+            opacity: 1,
+            y: [20, -5, 0],
+          }}
+          transition={{
+            duration: 0.5,
+            ease: [0.4, 0.0, 0.2, 1],
+          }}
+          className={cn("text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl mt-7 text-center max-w-3xl")}>
+          Empower Your Movement, <Highlight>Transform Your Health.</Highlight>
+        </motion.h1>
         <p className="mt-6 text-lg text-muted-foreground text-center max-w-2xl">
           Discover expert tips, treatments, and exercises
           designed to help you move better,live pain-free,
           and achieve lasting well-being.
         </p>
       </div>
-      <div className="flex flex-col sm:flex-row gap-4 mt-6 animate-fade sm:mb-24 lg:mb-32">
+      <div
+        className="flex flex-col sm:flex-row gap-4 mt-6 animate-fade sm:mb-24 lg:mb-32">
         <ArticleBox />
       </div>
 
@@ -39,5 +57,6 @@ export default function Home() {
         <Footer />
       </div>
     </div>
+
   );
 }

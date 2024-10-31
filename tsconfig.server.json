@@ -8,6 +8,7 @@
     },
     "include": [
         "server.ts",
-        "payload.config.ts"
+        "payload.config.ts",
+        "types/types.d.ts"
     ]
 }

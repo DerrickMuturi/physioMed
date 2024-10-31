@@ -18,9 +18,11 @@ const AerialFont = localFont({
 const Page = () => {
     const { blog } = useParams()
     const originalTitle = convertToOriginalTitle(blog as string)
-    const { data } = trpc.getPostOnTitle.useQuery({
+
+    const { data, isLoading: loading } = trpc.getPostOnTitle.useQuery({
         title: originalTitle
     })
+
     const post = data?.post
     const { data: posts, isLoading } = trpc.getTopPosts.useQuery()
 
@@ -50,9 +52,9 @@ const Page = () => {
             <div className={cn('flex mx-44 space-x-5 lg:space-x-60 my-20', AerialFont.className)}>
                 <div className='sm:hidden lg:flex'>
                     <Button variant={"outline"} className="p-5" asChild size={"lg"}>
-                        <div>
+                        <div className=''>
                             {posts && post?.map((part, index) => (
-                                <div className='flex space-x-2 text-gray-600 text-lg' key={index}>
+                                <div className='flex space-x-2 text-gray-600 text-lg breadcrumbs' key={index}>
                                     <h2>{part.type}</h2>
                                     <ChevronsRight className='mt-1.5' />
                                     {part.categories?.map((category, index) => (

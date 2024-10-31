@@ -68,7 +68,6 @@ export const Categories = [
 ];
 
 export const strip = (url: string) => {
-  console.log("url: ", url);
   if (typeof url === "string") {
     const imageUrl = url.replace(/^http:\/\/physio-med.vercel.app/, "");
     return imageUrl;
@@ -89,5 +88,5 @@ export const Capitalize = (word: string) => {
 };
 
 export const convertToOriginalTitle = (formattedTitle: string) => {
-  return formattedTitle.replace(/-/g, " ");
+  return formattedTitle.replace(/-/g, " ").replace(/%7C/g, "");
 };

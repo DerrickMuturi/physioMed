@@ -5,7 +5,7 @@ import { isAdmin } from "../access/isAdmin";
 export const Users: CollectionConfig = {
   slug: "users",
   auth: {
-    verify: {},
+    verify: true,
   },
   access: {
     read: adminAndUser,

@@ -5,7 +5,7 @@ const isAdminOrHasAccessToImages_1 = require("../access/isAdminOrHasAccessToImag
 exports.Media = {
     slug: "media",
     access: {
-        read: (0, isAdminOrHasAccessToImages_1.isAdminorHasAccessToImages)(),
+        read: () => true,
         create: (0, isAdminOrHasAccessToImages_1.isAdminorHasAccessToImages)(),
         update: (0, isAdminOrHasAccessToImages_1.isAdminorHasAccessToImages)(),
         delete: (0, isAdminOrHasAccessToImages_1.isAdminorHasAccessToImages)(),

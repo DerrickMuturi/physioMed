@@ -15,10 +15,10 @@ dotenv.config({
 });
 
 export default buildConfig({
-  serverURL:
-    process.env.NEXT_PUBLIC_SERVER_URL || "https://physio-med.vercel.app",
+  serverURL: process.env.NEXT_PUBLIC_SERVER_URL,
   admin: {
     bundler: webpackBundler(),
+    buildPath: "/admin",
   },
   routes: {
     admin: "/admin",
