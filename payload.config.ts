@@ -20,6 +20,7 @@ export default buildConfig({
     bundler: webpackBundler(),
     buildPath: "/admin",
   },
+  cors: ["https://physio-med-tt89.vercel.app/"],
   routes: {
     admin: "/admin",
   },
