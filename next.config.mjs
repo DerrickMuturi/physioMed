@@ -1,6 +1,10 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
+  swcMinify: true, // Ensures SWC minification is enabled
+  experimental: {
+    swcLoader: true, // Enables SWC as the default loader
+  },
   reactStrictMode: true,
   resolve: {
     fallback: {
